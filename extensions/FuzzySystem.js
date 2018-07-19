@@ -75,9 +75,8 @@ class LinguisticVariable {
 }
 
 class LinguisticTerm {
-    constructor(description, type, values) {
+    constructor(description, values) {
         this.description = description
-        this.type = type
         this.values = values
     }
 }
@@ -95,11 +94,6 @@ class Range {
         this.max = max
     }
 }
-
-var RuleType = {
-    TRIANGULAR: 1, // 3 Values
-    TRAPEZOIDAL: 2 // 4 Values
-};
 
 class Triangular {
     constructor(array) {
@@ -147,33 +141,33 @@ var fuzzySystem = new FuzzySystem();
 
 fuzzySystem.addInput(
     new LinguisticVariable("Umschlagszahl", new Range(0, 12), [
-        new LinguisticTerm("niedrig", RuleType.TRIANGULAR, new Triangular([0, 0, 6])),
-        new LinguisticTerm("mittel", RuleType.TRAPEZOIDAL, new Trapezoidal([0, 5.5, 6.5, 12])),
-        new LinguisticTerm("hoch", RuleType.TRIANGULAR, new Triangular([6, 12, 12]))
+        new LinguisticTerm("niedrig", new Triangular([0, 0, 6])),
+        new LinguisticTerm("mittel", new Trapezoidal([0, 5.5, 6.5, 12])),
+        new LinguisticTerm("hoch", new Triangular([6, 12, 12]))
     ])
 )
 
 fuzzySystem.addInput(
     new LinguisticVariable("Schiffsgroesse", new Range(5, 18), [
-        new LinguisticTerm("niedrig", RuleType.TRIANGULAR, new Triangular([5, 5, 11])),
-        new LinguisticTerm("mittel", RuleType.TRAPEZOIDAL, new Trapezoidal([5, 10, 12, 18])),
-        new LinguisticTerm("hoch", RuleType.TRIANGULAR, new Triangular([11, 18, 18]))
+        new LinguisticTerm("niedrig", new Triangular([5, 5, 11])),
+        new LinguisticTerm("mittel", new Trapezoidal([5, 10, 12, 18])),
+        new LinguisticTerm("hoch", new Triangular([11, 18, 18]))
     ])
 )
 
 fuzzySystem.addInput(
     new LinguisticVariable("Defektschwere", new Range(0, 10), [
-        new LinguisticTerm("niedrig", RuleType.TRIANGULAR, new Triangular([0, 0, 5])),
-        new LinguisticTerm("mittel", RuleType.TRIANGULAR, new Triangular([0, 5, 10])),
-        new LinguisticTerm("hoch", RuleType.TRIANGULAR, new Triangular([5, 10, 10]))
+        new LinguisticTerm("niedrig", new Triangular([0, 0, 5])),
+        new LinguisticTerm("mittel", new Triangular([0, 5, 10])),
+        new LinguisticTerm("hoch", new Triangular([5, 10, 10]))
     ])
 )
 
 fuzzySystem.addOutput(
     new LinguisticVariable("Lieferverlängerung", new Range(0, 30), [
-        new LinguisticTerm("niedrig", RuleType.TRIANGULAR, new Triangular([0, 0, 15])),
-        new LinguisticTerm("mittel", RuleType.TRIANGULAR, new Triangular([0, 15, 30])),
-        new LinguisticTerm("hoch", RuleType.TRIANGULAR, new Triangular([15, 30, 30]))
+        new LinguisticTerm("niedrig", new Triangular([0, 0, 15])),
+        new LinguisticTerm("mittel", new Triangular([0, 15, 30])),
+        new LinguisticTerm("hoch", new Triangular([15, 30, 30]))
     ])
 )
 
