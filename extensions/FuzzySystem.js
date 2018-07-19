@@ -24,8 +24,8 @@ export class FuzzySystem {
             var minValue = 1 // Start out at maximum Value for a LinguisticTerm -> AND-OPERATOR chooses least active.
             for (var x in values) { // For every InputVariable
                 var inputVariable = this.inputVariables[x] // Get the matching InputVariable
-                var variableTermRuleName = rule.terms[x] // Get the matching rule name for the InputVariable
-                var term = inputVariable.terms[variableTermRuleName] // Get the Lingustic Term (function) for the rule name
+                var variableTermRuledescription = rule.terms[x] // Get the matching rule description for the InputVariable
+                var term = inputVariable.terms[variableTermRuledescription] // Get the Lingustic Term (function) for the rule description
                 minValue = Math.min(minValue, term.values.y(values[x]))// AND-Operator
             }
             outputValues.push(minValue)
@@ -34,7 +34,7 @@ export class FuzzySystem {
         return this.computeCentroidPoint(outputValues)
     }
 
-    // Does a poor-mans integral by taking the max value of each rules term name matching in outputValue yValue.
+    // Does a poor-mans integral by taking the max value of each rules term description matching in outputValue yValue.
     computeCentroidPoint(values) {
         var xsZaehler = 0;
         var xsNenner = 0;
@@ -69,14 +69,14 @@ class LinguisticVariable {
         this.range = range
         this.terms = {}
         terms.forEach((term) => {
-            this.terms[term.name] = term
+            this.terms[term.description] = term
         })
     }
 }
 
 class LinguisticTerm {
-    constructor(name, type, values) {
-        this.name = name
+    constructor(description, type, values) {
+        this.description = description
         this.type = type
         this.values = values
     }
