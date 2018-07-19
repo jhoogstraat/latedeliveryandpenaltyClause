@@ -1,0 +1,32 @@
+namespace org.proseminar.joshuahoogstraat.fuzzysolver
+
+concept FuzzyModel {
+  --> FuzzyLinguisticVariable[] inputVariables
+  --> FuzzyRule[] rules
+  //o String name
+}
+
+asset FuzzyLinguisticVariable identified by InputVariableId { // Input Variable
+  o String InputVariableId
+  o String description
+  --> FuzzyLinguisticTerm[] terms
+}
+
+enum TermType {
+  o TRIANGULAR // 3 Values
+  o TRAPEZOIDAL // 4 Values
+}
+
+asset FuzzyLinguisticTerm identified by termID { // aka Membership Function
+  o String termID
+  o String name
+  o TermType type
+  o Double[] values
+}
+
+asset FuzzyRule identified by ruleId { // AND-OPERATOR always
+  o String ruleId
+  o String[] connectedTermIds
+  o String resultTermId
+  o Double wheight default = 1.0
+}
