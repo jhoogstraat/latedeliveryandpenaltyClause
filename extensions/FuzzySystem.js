@@ -50,7 +50,9 @@ class DefuzzyficationMethods {
         var startValue = fuzzySystem.outputVariable.range.min
         var endValue = fuzzySystem.outputVariable.range.max
 
-        var dx = (endValue - startValue) / 150 // range evenly distributed into 250 wide steps.
+        var dx = 0.5 // Delta X
+
+        //var dx = (endValue - startValue) / 150. // range evenly distributed into 250 wide steps.
 
         for (var xValue = startValue; xValue <= endValue; xValue += dx) { // Poor-mans Integral (but precision can be adjusted for the cost of compute time)
 
@@ -228,17 +230,18 @@ fuzzySystem.addRules(
 
 var results = [];
 results.push(fuzzySystem.computeSystem({ Defektschwere: 8, Schiffsgroesse: 6.3, Umschlagszahl: 8.9 }) - 13.1330) // Yilmaz: 11.9995 || Matlab: 13.3430
-// results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 6.3, Umschlagszahl: 8.9 }) - 13.3430) // Yilmaz: 11.9995 || Matlab: 13.3430
-// results.push(fuzzySystem.computeSystem({ Defektschwere: 8, Schiffsgroesse: 15.5, Umschlagszahl: 8.9 }) - 15.9119)// Yilmaz: 15.8475 || Matlab: 15.9119
-// results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 15.5, Umschlagszahl: 8.9 }) - 13.6848)// Yilmaz: 12.3015 || Matlab: 13.6848
+results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 6.3, Umschlagszahl: 8.9 }) - 13.3430) // Yilmaz: 11.9995 || Matlab: 13.3430
+results.push(fuzzySystem.computeSystem({ Defektschwere: 8, Schiffsgroesse: 15.5, Umschlagszahl: 8.9 }) - 15.9119)// Yilmaz: 15.8475 || Matlab: 15.9119
+results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 15.5, Umschlagszahl: 8.9 }) - 13.6848)// Yilmaz: 12.3015 || Matlab: 13.6848
 
-// // Hafen 2
-// console.log("\nHafen 2")
-// results.push(fuzzySystem.computeSystem({ Defektschwere: 8, Schiffsgroesse: 6.3, Umschlagszahl: 1.95 }) - 17.7247)// Yilmaz: 19.2855 || Matlab: 17.7247
-// results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 6.3, Umschlagszahl: 1.95 }) - 15.2017)// Yilmaz: 15.3315 || Matlab: 15.2017
-// results.push(fuzzySystem.computeSystem({ Defektschwere: 8, Schiffsgroesse: 15.5, Umschlagszahl: 1.95 }) - 17.9913)// Yilmaz: 19.5830 || Matlab: 17.9913
-// results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 15.5, Umschlagszahl: 1.95 }) - 18.1842)// Yilmaz: 19.7550 || Matlab: 18.1842
+// Hafen 2
+console.log("\nHafen 2")
+results.push(fuzzySystem.computeSystem({ Defektschwere: 8, Schiffsgroesse: 6.3, Umschlagszahl: 1.95 }) - 17.7247)// Yilmaz: 19.2855 || Matlab: 17.7247
+results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 6.3, Umschlagszahl: 1.95 }) - 15.2017)// Yilmaz: 15.3315 || Matlab: 15.2017
+results.push(fuzzySystem.computeSystem({ Defektschwere: 8, Schiffsgroesse: 15.5, Umschlagszahl: 1.95 }) - 17.9913)// Yilmaz: 19.5830 || Matlab: 17.9913
+results.push(fuzzySystem.computeSystem({ Defektschwere: 4, Schiffsgroesse: 15.5, Umschlagszahl: 1.95 }) - 18.1842)// Yilmaz: 19.7550 || Matlab: 18.1842
 
-// var sum = 0
-// results.forEach((result) => sum += Math.abs(result))
-// console.log(sum / 8);
+var sum = 0
+results.forEach((result) => sum += Math.abs(result))
+console.log(sum / 8);
+console.log(results)
