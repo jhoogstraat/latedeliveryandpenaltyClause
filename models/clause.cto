@@ -43,6 +43,9 @@ asset LateDeliveryAndPenaltyClause extends AccordClause {
    * Fractional part of a ... is considered a whole ...
    */
   o TemporalUnit fractionalPart
+
+
+  o Boolean fuzzyLogicMaxDaysPenalty
 }
 
 /**
@@ -71,7 +74,7 @@ transaction LateDeliveryAndPenaltyRequest extends Request {
   o Double goodsValue
 
   // Fuzzy Contract
-  o Boolean failure optional
+  o Boolean machineFailure optional
 
   o Double transhipmentFigures optional
 
@@ -94,5 +97,6 @@ transaction LateDeliveryAndPenaltyResponse extends Response {
    */
   o Boolean buyerMayTerminate
 
-  o Double DeliveryExtensionDays optional
+
+  o Double MaxEndededDeliveryTermination optional
 }
