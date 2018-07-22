@@ -1,11 +1,11 @@
 {
     "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyRequest",
     "forceMajeure": false,
-    "agreedDelivery": "Juli 6, 2018 03:24:00",
+    "agreedDelivery": "Juli 8, 2018 00:00:00",
     "deliveredAt": null,
     "goodsValue": 200.00,
     "machineFailure": true,
-    "transhipmentFigures" :12,
-    "shipSize": 18,
-    "malfunction" : 15
+    "transhipmentFigures" :8.9,
+    "shipSize": 6.3,
+    "malfunction" : 8
 }

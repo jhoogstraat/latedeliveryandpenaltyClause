@@ -97,6 +97,5 @@ transaction LateDeliveryAndPenaltyResponse extends Response {
    */
   o Boolean buyerMayTerminate
 
-
-  o Double MaxEndededDeliveryTermination optional
+  o Double maxDelayUntilTermination optional
 }
