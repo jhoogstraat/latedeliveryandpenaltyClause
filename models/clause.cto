@@ -28,5 +28,5 @@ transaction LateDeliveryAndPenaltyRequest extends Request {
 transaction LateDeliveryAndPenaltyResponse extends Response {
   o Double penalty // The penalty to be paid by the seller
   o Boolean buyerMayTerminate // Whether the buyer may terminate the contract
-  o Double maxDelayUntilTermination optional
+  o Double maxDelayUntilTermination optional // Fuzzy Logic-calculated max delay until termination
 }
