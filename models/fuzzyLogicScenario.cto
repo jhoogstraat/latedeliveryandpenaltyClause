@@ -1,0 +1,8 @@
+namespace org.fuzzylogic.scenarios
+
+/**
+ * Described Scenarios for which fuzzy inference systems are set up.
+ */
+enum Scenario {
+  o inTransportProblem
+}

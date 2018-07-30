@@ -2,16 +2,15 @@ namespace org.accordproject.latedeliveryandpenalty
 
 import org.accordproject.cicero.contract.* from https://models.accordproject.org/cicero/contract.cto
 import org.accordproject.cicero.runtime.* from https://models.accordproject.org/cicero/runtime.cto
-import org.accordproject.time.* from https://models.accordproject.org/time.cto
+
+import org.accordproject.time.german.*
+import org.fuzzylogic.scenarios.*
 
 asset LateDeliveryAndPenaltyClause extends AccordClause {
   o Boolean forceMajeure optional // Does the clause include a force majeure provision?
-  o Duration penaltyDuration optional // For every penaltyDuration that the goods are late
+  o Duration penaltyDuration // For every penaltyDuration that the goods are late
   o Double penaltyPercentage // Seller pays the buyer penaltyPercentage % of the value of the goods
   o Double capPercentage // Up to capPercentage % of the value of the goods
-  o Duration termination // If the goods are >= termination late then the buyer may terminate the contract
-  o TemporalUnit fractionalPart // Fractional part of a ... is considered a whole ...
-  o Boolean fuzzyLogicMaxDaysPenalty // Maximum Delay until buyer can terminate
 }
 
 transaction LateDeliveryAndPenaltyRequest extends Request {
@@ -19,10 +18,8 @@ transaction LateDeliveryAndPenaltyRequest extends Request {
   o DateTime agreedDelivery // What was the agreed delivery date for the goods?
   o DateTime deliveredAt optional // If the goods have been delivered, when where they delivered?
   o Double goodsValue // What is the value of the goods?
-  o Boolean machineFailure optional // Indiactes if a machine Failure occured
-  o Double transhipmentFigures optional // Represents the harbor size
-  o Double shipSize optional // Represents the ship size
-  o Double malfunction optional // Represents the extend of the failure
+  o Scenario scenario optional // In case of delay -> which fuzzy system to activate
+  o Double[] fuzzyInputValues optional // If case of fuzzy Logic -> Input Data
 }
 
 transaction LateDeliveryAndPenaltyResponse extends Response {
