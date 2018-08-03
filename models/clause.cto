@@ -11,6 +11,7 @@ asset LateDeliveryAndPenaltyClause extends AccordClause {
   o Duration penaltyDuration // For every penaltyDuration that the goods are late
   o Double penaltyPercentage // Seller pays the buyer penaltyPercentage % of the value of the goods
   o Double capPercentage // Up to capPercentage % of the value of the goods
+  o Duration maxDelay // The alternative maximum delay
 }
 
 transaction LateDeliveryAndPenaltyRequest extends Request {
