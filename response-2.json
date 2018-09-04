@@ -1,0 +1,8 @@
+"response": {
+    "$class": "org.accordproject.latedeliveryandpenalty.LateDeliveryAndPenaltyResponse",
+    "penalty": 110.00000000000001,
+    "buyerMayTerminate": true,
+    "maxDelayUntilTermination": 8.770114942528735,
+    "transactionId": "b918405b-b57f-47c5-8e2a-dda365254323",
+    "timestamp": "2018-08-03T10:41:01.176Z"
+  }
